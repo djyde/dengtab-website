@@ -1,13 +1,15 @@
 ---
 // import "@/styles/globals.css";
-import '../styles/global.css';
+import "../styles/global.css";
 import { config } from "../config";
+const { frontmatter } = Astro.props;
 ---
 
 <html lang="en" class="bg-background text-foreground">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{config.siteTitle}</title>
@@ -15,7 +17,7 @@ import { config } from "../config";
   <body class="">
     <slot />
 
-    <footer class="py-24  text-center">
+    <footer class="py-24 text-center">
       <p>&copy; {new Date().getFullYear()} {config.brand}</p>
     </footer>
   </body>
