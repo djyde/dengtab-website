@@ -1,0 +1,49 @@
+---
+import Download from "../components/Download.astro";
+import { config } from "../config";
+import BaseLayout from "./Base.astro";
+const { frontmatter } = Astro.props;
+import { BorderBeam } from "@/components/magicui/border-beam.tsx";
+import SparklesText from "@/components/magicui/sparkles-text";
+---
+
+<BaseLayout>
+  <nav class="py-10">
+    <div class="con flex items-end gap-3">
+      <img class="w-[32px]" src="/logo.png" alt="logo" />
+      <a href="/" class="font-bold text-xl">{config.brand}</a>
+    </div>
+  </nav>
+  <div class="space-y-16">
+    <div class="con">
+      <div class="text-center space-y-5 mt-24">
+        <SparklesText text={frontmatter.header1} />
+        <h2 class="text-2xl text-foreground/60">{frontmatter.header2}</h2>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <Download />
+    </div>
+    <div class="con">
+      {
+        frontmatter.video && (
+          <div class="flex relative items-center justify-center rounded-xl shadow-xl">
+            <video
+              class="rounded-xl w-full h-full"
+              controls
+              loop="true"
+              autoplay={true}
+              src={frontmatter.video}
+            />
+            <BorderBeam borderWidth={4} duration={6} />
+          </div>
+        )
+      }
+    </div>
+
+    <div class="prose prose-md mx-auto prose-invert">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

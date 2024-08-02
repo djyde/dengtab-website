@@ -1,0 +1,13 @@
+---
+import { config } from "../config";
+---
+
+{
+  import.meta.env.PROD && (
+    <script
+      defer
+      src="https://randy-umami.zeabur.app/script.js"
+      data-website-id={config.umamiId}
+    />
+  )
+}

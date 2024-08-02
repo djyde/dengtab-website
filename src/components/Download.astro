@@ -1,0 +1,23 @@
+---
+import { config } from "../config";
+---
+
+<div class="flex gap-5">
+  {
+    config.downloads.map((download) => {
+      return (
+        <a
+          href={download.url}
+          class="flex gap-1 items-center rounded-xl px-5 py-2 font-bold no-underline"
+          style={{
+            backgroundColor: download.color,
+          }}
+          target="_blank"
+        >
+          <span class="w-[36px]" set:html={download.icon} />
+          <span>{download.name}</span>
+        </a>
+      );
+    })
+  }
+</div>
