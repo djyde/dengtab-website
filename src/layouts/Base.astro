@@ -2,13 +2,13 @@
 // import "@/styles/globals.css";
 import "../styles/global.css";
 import { config } from "../config";
-const { og } = Astro.props;
+const { seo: seoInfo} = Astro.props;
 import { SEO } from "astro-seo";
 ---
 
 <html lang="en" class="bg-background text-foreground">
   <head>
-    <SEO title={og.title} description={og.description} openGraph={og} />
+    <SEO {...seoInfo} />
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="sitemap" href="/sitemap-index.xml" />
