@@ -4,10 +4,12 @@ import "../styles/global.css";
 import { config } from "../config";
 const { seo: seoInfo} = Astro.props;
 import { SEO } from "astro-seo";
+import Umami from '../components/Umami.astro';
 ---
 
 <html lang="en" class="bg-background text-foreground">
   <head>
+    <Umami />
     <SEO {...seoInfo} />
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
