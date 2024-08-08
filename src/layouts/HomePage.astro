@@ -5,6 +5,8 @@ import BaseLayout from "./Base.astro";
 const { frontmatter } = Astro.props;
 import { BorderBeam } from "@/components/magicui/border-beam";
 import SparklesText from "@/components/magicui/sparkles-text";
+import Marquee from "@/components/magicui/marquee";
+import Avatar from "boring-avatars";
 ---
 
 <BaseLayout seo={frontmatter.seo}>
@@ -17,8 +19,14 @@ import SparklesText from "@/components/magicui/sparkles-text";
   <div class="space-y-16">
     <div class="con">
       <div class="text-center space-y-5 mt-24">
-        <h2 class="text-4xl lg:text-6xl text-left lg:text-center font-extrabold">{frontmatter.header1}</h2>
-        <h2 class="text-2xl text-left lg:text-center text-foreground/60">{frontmatter.header2}</h2>
+        <h2
+          class="text-4xl lg:text-6xl text-left lg:text-center font-extrabold"
+        >
+          {frontmatter.header1}
+        </h2>
+        <h2 class="text-2xl text-left lg:text-center text-foreground/60">
+          {frontmatter.header2}
+        </h2>
       </div>
     </div>
 
@@ -39,6 +47,29 @@ import SparklesText from "@/components/magicui/sparkles-text";
           </div>
         )
       }
+    </div>
+
+    <div>
+      <Marquee pauseOnHover className="py-10 [--duration:20s]">
+        {
+          config.feedbacks.map((feedback) => (
+            <div class="flex-shrink-0 flex flex-col justify-between bg-gray-800 rounded-lg p-4 space-y-5 text-white mx-4 w-[300px]">
+              <div class="flex flex-col gap-5">
+                {/* @ts-ignore */}
+                <Avatar.default
+                  name={feedback.username}
+                  size={32}
+                  variant="beam"
+                />
+                <p class="text-sm">{feedback.content}</p>
+              </div>
+              <div>
+                <p class="text-sm text-right w-full text-foreground/60">—— {feedback.username}</p>
+              </div>
+            </div>
+          ))
+        }
+      </Marquee>
     </div>
 
     <div class="prose prose-md mx-auto prose-invert p-8">

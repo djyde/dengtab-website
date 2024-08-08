@@ -8,7 +8,9 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://dengtab.com",
-  integrations: [react(), tailwind({
+  integrations: [react({
+    experimentalReactChildren: true
+  }), tailwind({
     applyBaseStyles: false
   }), mdx(), sitemap()]
 });
